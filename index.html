@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love you</title>
+    <title>Love you🐵</title>
     <style>
         *,
         *::before,
@@ -58,7 +58,7 @@
             height: 40px;
             z-index: 2;
         }
-
+@media (min-width: 768px) {
         .crescent-moon-1::after {
             content: "";
             position: absolute;
@@ -67,10 +67,26 @@
             border-radius: 50%;
             box-shadow: 26px 30px 1px 20px #fff;
             transform: rotate(-24deg);
-            margin-top: -70%;
+            margin-top: -65%;
             margin-left: 50%;
             z-index: 0;
         }
+     }
+     
+     @media (max-width: 768px) {
+        .crescent-moon-1::after {
+            content: "";
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 26px 30px 1px 20px #fff;
+            transform: rotate(-24deg);
+            margin-top: -73%;
+            margin-left: 45%;
+            z-index: 0;
+        }
+     }
 
         @keyframes swing {
             0% { transform: translateX(-50%) rotate(-10deg); }
