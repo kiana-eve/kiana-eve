@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love you</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            font-size: 2vmin;
+            position: relative;
+            display: grid;
+            place-items: center;
+            background: #cecdcd;
+            background: radial-gradient(circle at center, #9bbdf222, #6a6c8a);
+        }
+
+        .mountains {
+            position: absolute;
+            height: 45em;
+            width: 32em;
+            border: .9em solid gray;
+            background:
+                radial-gradient(#FFF 30%, transparent 80%) 15% 10% / 1em 1em,
+                radial-gradient(#FFF 20%, transparent 50%) 20% 40% / 1em 1em,
+                radial-gradient(#FFF 20%, transparent 50%) 50% 5% / 1em 1em,
+                radial-gradient(#FFF 20%, transparent 50%) 55% 12% / 1.5em 1.5em,
+                radial-gradient(#FFF 20%, transparent 50%) right 25% top 20% / 1em 1em,
+                 radial-gradient(#FFF 20%, transparent 50%) left 40% top 20% / 1em 1em,
+                radial-gradient(#FFF 20%, transparent 80%) right 5% top 5% / 1em 1em,
+                conic-gradient(at 0 20%, transparent 115deg, #41354e 115deg 245deg, transparent 245deg) left 50% bottom -10em / 40em 35em,
+                conic-gradient(at 100% 0, transparent 135deg, #2d556a 135deg 250deg, transparent 250deg) 0em 16em / 40em 30em,
+                conic-gradient(at 50% 0, transparent 133deg, #6f8895 135deg 225deg, transparent 225deg) 50% 12em / 35em 30em,
+                conic-gradient(transparent 135deg, #adb1b9 135deg 225deg, transparent 225deg) -9em 0em / 25em 30em,
+                linear-gradient(#a6adb7, #dbd1d4 60%);
+            background-repeat: no-repeat;
+            box-shadow:
+                rgba(0, 0, 0, 0.25) 0px 54px 55px,
+                rgba(0, 0, 0, 0.12) 0px -12px 30px,
+                rgba(0, 0, 0, 0.12) 0px 4px 6px,
+                rgba(0, 0, 0, 0.17) 0px 12px 13px,
+                rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            z-index: 1;
+        }
+
+        .character2 {
+            margin-top: 62%;
+            margin-left: 80%;
+            height: 40px;
+            z-index: 2;
+        }
+
+        .crescent-moon-1::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            box-shadow: 26px 30px 1px 20px #fff;
+            transform: rotate(-24deg);
+            margin-top: -70%;
+            margin-left: 50%;
+            z-index: 0;
+        }
+
+        @keyframes swing {
+            0% { transform: translateX(-50%) rotate(-10deg); }
+            50% { transform: translateX(-50%) rotate(10deg); }
+            100% { transform: translateX(-50%) rotate(-10deg); }
+        }
+
+        #myButton {
+            padding: 10px 20px;
+            font-size: 15px;
+            color: #41354e;
+            background-color: #e7e9eb;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: swing 10s infinite ease-in-out;
+            transform-origin: top;
+            z-index: 2;
+        }
+
+        #message {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #41354e;
+            background-color: #e7e9eb;
+            display: none;
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: swing 10s infinite ease-in-out;
+            transform-origin: top;
+            border-radius: 10px;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="mountains">
+        <img src="https://img.icons8.com/?size=100&id=124001&format=png&color=000000" alt="Character 2" class="character2">
+        <div class="container">
+            <div class="crescent-moon-1"></div>
+        </div>
+        <button id="myButton" onclick="showMessage()">Tap Here</button>
+        <div id="message">I Love You ♡</div>
+    </div>
+
+    <script>
+        const button = document.getElementById("myButton");
+        const message = document.getElementById("message");
+        let attemptCount = 0;
+        const maxAttempts = 8;
+        const buttonSize = button.offsetWidth;
+
+        button.addEventListener("mouseover", function() {
+            if (attemptCount < maxAttempts) {
+                moveButton();
+                attemptCount++;
+            }
+        });
+
+        function moveButton() {
+            const container = document.querySelector(".mountains");
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = button.getBoundingClientRect();
+
+            const offset = 50;
+            const maxX = containerRect.width - buttonRect.width - offset;
+            const maxY = containerRect.height - buttonRect.height - offset;
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+        }
+
+        function showMessage() {
+            if (attemptCount >= maxAttempts) {
+                button.style.display = "none";
+                message.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
+\end{code}
